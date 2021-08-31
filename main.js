@@ -58,7 +58,6 @@ console.log(worker)
 worker.speaking()
 worker.physicalActivity()
 worker.workInfo()
-
 let hunter = new Hunter('Petro','black', 'green', 80, 185, 'duck', 'forest')
 console.log(hunter)
 hunter.speaking()
