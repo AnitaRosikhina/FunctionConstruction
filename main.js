@@ -53,6 +53,19 @@ Worker.prototype.workInfo = function(){
     console.log(`${this.name} works for ${this.company} at the position of ${this.position}`);
 }
 
+function Librarian(name, hairColor, eyeColor, weight, height, favoriteBook) {
+    Woman.call(this, name, hairColor, eyeColor, weight, height)
+    this.favoriteBook = favoriteBook
+}
+
+Librarian.prototype = Object.create(Woman.prototype)
+Librarian.prototype.constructor = Librarian
+
+Librarian.prototype.like = function() {
+    console.log(`${this.name}'s favorite book is ${this.favoriteBook}`)
+}
+
+let librarian = new Librarian('Alin','pink', 'blue', 53,160, 'Romeo and Juliet')
 let worker = new Worker('Ivan', 'white', 'blue', 75, 170, 'frontend developer', 'google')
 console.log(worker)
 worker.speaking()
