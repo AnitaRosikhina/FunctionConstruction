@@ -65,7 +65,30 @@ Librarian.prototype.like = function() {
     console.log(`${this.name}'s favorite book is ${this.favoriteBook}`)
 }
 
+function Hurse(name, hairColor, eyeColor, weight, height, status) {
+        Woman.call(this, name, hairColor, eyeColor, weight, height)
+        this.status = status
+}
+
+Hurse.prototype = Object.create(Woman.prototype)
+Hurse.prototype.constructor = Hurse
+
+Hurse.prototype.skill = function() {
+    console.log(`${this.name} is giving injections`)
+}
+
+let hurse = new Hurse('Ann','black', 'black', 53,160, 'head nurse')
+console.log(hurse)
+hurse.speaking()
+hurse.physicalActivity()
+hurse.skill()
+
 let librarian = new Librarian('Alin','pink', 'blue', 53,160, 'Romeo and Juliet')
+console.log(librarian)
+librarian.speaking()
+librarian.physicalActivity()
+librarian.like()
+
 let worker = new Worker('Ivan', 'white', 'blue', 75, 170, 'frontend developer', 'google')
 console.log(worker)
 worker.speaking()
@@ -76,14 +99,3 @@ console.log(hunter)
 hunter.speaking()
 hunter.physicalActivity()
 hunter.dog()
-// let ww = new Man('black', 'blue', '120', '20')
-// console.log(ww)
-//
-// let dd = new Woman('white', 'blue', '120', '20')
-// console.log(dd)
-
-// function Woman () {}
-// let qqq = new Human('black', 'blue', '120', '20')
-// console.log(qqq)
-// qqq.speaking()
-// qqq.physicalActivity()
