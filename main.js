@@ -99,3 +99,61 @@ console.log(hunter)
 hunter.speaking()
 hunter.physicalActivity()
 hunter.dog()
+
+
+function Animal(name, habitat, wool, claws, run, jump, fly, swim, crawl) {
+    this.name = name
+    this.habitat = habitat
+    this.wool = wool
+    this.claws = claws
+    this.run = run
+    this.jump = jump
+    this.fly = fly
+    this.swim = swim
+    this.crawl = crawl
+}
+
+Animal.prototype.eat = function(){
+    console.log(`The ${this.name} needs to eat`)
+}
+
+Animal.prototype.breathe = function() {
+    console.log(`The ${this.name} needs to breathe`)
+}
+
+function Herbivorous(name, habitat, wool, claws, run, jump, fly, swim, crawl, plantEat) {
+    Animal.call(this, name, habitat, wool, claws, run, jump, fly, swim, crawl)
+    this.plantEat = plantEat
+}
+
+Herbivorous.prototype = Object.create(Animal.prototype)
+Herbivorous.prototype.constructor = Herbivorous
+
+function Predator(name, habitat, wool, claws, run, jump, fly, swim, crawl, victim) {
+    Animal.call(this, name, habitat, wool, claws, run, jump, fly, swim, crawl)
+    this.victim = victim
+}
+
+Predator.prototype = Object.create(Animal.prototype)
+Predator.prototype.constructor = Predator
+
+
+let koala = new Herbivorous('koala','forest', true, true, true, true, false, false,false, 'eucalyptus')
+console.log(koala)
+koala.eat()
+koala.breathe()
+
+let hamster = new Herbivorous('hamster', 'burrows', true, false, true, false, false,false,false, 'corn')
+console.log(hamster)
+hamster.eat()
+hamster.breathe()
+
+let lion = new Predator('lion','Africa', true, true, true, true,false,true,false, 'antelope')
+console.log(lion)
+lion.eat()
+lion.breathe()
+
+let eagle = new Predator('eagle', 'mountains', false, true, false,false,true, false, false, 'rabbit')
+console.log(eagle)
+eagle.eat()
+eagle.breathe()
